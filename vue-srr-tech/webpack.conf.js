@@ -5,11 +5,13 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 // const { VueLoaderPlugin } = require('vue-loader');  // TODO:两种方式
 const ExtractPlugin=require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin'); 
 
 const isDev = process.env.NODE_ENV === "development";
 
 const config={
     target:'web',
+    // entry:[ "babel-polyfill" , path.join(__dirname,'src/index.js')], 
     entry:path.join(__dirname,'src/index.js'),
     output:{
         filename:"bundle.[hash:8].js",
@@ -39,7 +41,7 @@ const config={
                         loader:"url-loader",
                         options:{
                             limit:1024,
-                            name:'[name].[ext]'
+                            name:'[name].[hash:8].[ext]'
                         }
                     }
                 ]
@@ -47,13 +49,14 @@ const config={
         ],        
     },
     plugins: [
-       new webpack.DefinePlugin({
+        new CleanWebpackPlugin(['dist']),
+        new webpack.DefinePlugin({
             'process.env':{
                 NODE_ENV:isDev ? '"development"':'"production"'
             }
-       }), 
-       new VueLoaderPlugin(),
-       new HMTLPlugin()
+        }), 
+        new VueLoaderPlugin(),
+        new HMTLPlugin()
     ],
     mode:"none"
 }
