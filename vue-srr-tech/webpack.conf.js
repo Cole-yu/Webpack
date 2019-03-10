@@ -58,7 +58,7 @@ const config={
         new VueLoaderPlugin(),
         new HMTLPlugin()
     ],
-    mode:"none"
+    mode:"none"     // webpack4中，mode可以替换DefinePlugin对process.env.NODE_ENV的定义
 }
 
 if(isDev){

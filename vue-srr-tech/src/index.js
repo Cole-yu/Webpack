@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import App from './app.vue';
+import axios from 'axios';
 
 import './assets/styles/global.styl';
 
@@ -25,6 +26,29 @@ var promise=new Promise(function(resolve, reject){
 });
 class Person{}
 console.log(arr[Symbol.iterator]());
+
+
+axios.post('http://localhost:3000', {
+	firstName: 'Fred',
+	lastName: 'Flintstone'
+})
+.then(function (response) {	
+	console.log(response);
+	
+	// response = {
+	// 	config:{ },
+  	// 	data:[],
+  	// 	headers:{},
+  	// 	request:{},
+  	// 	status:200,
+  	// 	statusText:"ok"
+  	// }
+	  	
+	console.log(response.data[0].name);
+})
+.catch(function (error) {
+	console.log(error);
+});
 
 new Vue({
     render:(h)=>h(App)      // render 不是reder 找了半天bug
