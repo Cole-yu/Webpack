@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "outDir": "./dest/",
+      "noImplicitAny": true,
+      "module": "es2015",
+      "target": "es5",
+      "jsx": "react",
+      "allowJs": true
+    }
+}
