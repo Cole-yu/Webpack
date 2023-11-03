@@ -24,6 +24,7 @@ import a2 from '@/image/animal/a_02.jpg';
 import a3 from '@/image/animal/a_03.jpg';
 import a4 from '@/image/animal/a_04.jpg';
 import a5 from '@/image/animal/a_05.jpg';
+import { getName } from '@/js/foo';
 export default{
     data(){
         return {
@@ -40,7 +41,14 @@ export default{
     methods:{
         clickImgHandle: function(url){
             this.viewImgUrl = url;
+        },
+        async get(){
+            let result = await getName();
+            console.log('result', result);
         }
+    },
+    created(){
+        this.get();
     }
 }
 </script>

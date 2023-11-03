@@ -6,6 +6,8 @@ const TerserPlugin = require("terser-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 const { VueLoaderPlugin } = require('vue-loader');
+const chalk = require('chalk');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 // 根目录
 const root = path.resolve(__dirname, '..');
@@ -23,6 +25,7 @@ const devMode = process.env.NODE_ENV === 'development';
 
 module.exports = {
   resolve: {
+    extensions: [".js", ".jsx", ".json", ".vue"], // 可省略后缀
     alias: {
       '@': rootResolve('src')
     }
@@ -114,7 +117,6 @@ module.exports = {
       // ignoreOrder: false, //启用关闭 警告⚠️
       // chunkFilename: `style/[name].[chunkhash:8].css`
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         {
@@ -132,7 +134,11 @@ module.exports = {
       //   NODE_ENV: JSON.stringify('production')
       // }
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new ProgressBarPlugin({
+      format: `:msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`,
+      clear: false
+    }),
   ],
   optimization: {
     // usedExports: true, // 开发模式使用treesharking
