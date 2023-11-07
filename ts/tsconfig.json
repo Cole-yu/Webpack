@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "noImplicitAny": true, // 有隐含的any类型时报错
+        "removeComments": true, // 移除注释
+        "preserveConstEnums": true, // 保留const和enum声明
+        "sourceMap": true,
+        // "esModuleInterop": true, // import * as React from 'react'; 能改成这样写 import React from 'react';
+        "moduleResolution": "Node",
+        "jsx": "react-jsx", // react模式会生成React.createElement，在使用前不需要再进行转换操作了，输出文件的扩展名为.js
+    },
+    // "files":[
+    //     "src/ts/bar.ts"
+    // ],
+    "include": [
+        "src/ts/**/*.ts",
+        "src/ts/**/*.tsx"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}

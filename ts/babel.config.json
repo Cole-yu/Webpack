@@ -1,0 +1,9 @@
+{
+  "presets": [
+    "@babel/preset-env", // ES6 语法转化成 ES5
+    "@babel/preset-react" // React+Typescript 语法转化成 JS
+  ],
+  "plugins": [
+    
+  ]
+}
