@@ -6,6 +6,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 const { VueLoaderPlugin } = require('vue-loader');
+
 const chalk = require('chalk');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
@@ -25,13 +26,13 @@ const devMode = process.env.NODE_ENV === 'development';
 
 module.exports = {
   resolve: {
-    extensions: [".js", ".jsx", ".json", ".vue"], // 可省略后缀
+    extensions: [".js", ".jsx", ".json", ".vue", ".ts", ".tsx"], // 可省略后缀
     alias: {
       '@': rootResolve('src')
     }
   },
   entry: {
-    main: rootResolve('src/main.js')
+    main: rootResolve('src/main.ts')
   },
   output: {
     filename: 'js/[name].[contenthash].js',
@@ -41,6 +42,18 @@ module.exports = {
   },
   module: {
     rules: [
+      { 
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use:{
+          loader: "ts-loader", // tsc 编译
+          options: {
+            // configFile: rootResolve('tsconfig.other.json'), // 指定别的ts配置，为了区分脚本的ts配置
+            appendTsSuffixTo: [/\.vue$/], // 对应文件添加.ts或.tsx后缀 app.vue.ts
+            // transpileOnly: true, // 关闭ts-loader的类型检查，即只进行转译 npm i fork-ts-checker-webpack-plugin --save-dev new ForkTsCheckerWebpackPlugin()
+          },
+        }
+      },
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
@@ -140,34 +153,4 @@ module.exports = {
       clear: false
     }),
   ],
-  optimization: {
-    // usedExports: true, // 开发模式使用treesharking
-    minimize: true,
-    minimizer: [
-      new CssMinimizerPlugin(),
-      new TerserPlugin()
-    ],
-    // runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-      },
-    },
-    moduleIds: 'deterministic',
-  },
-  performance: {
-    hints: devMode ? false : 'warning',
-    // 入口起点的最大体积 整数类型（以字节为单位）
-    maxEntrypointSize: 2000000, // 1kb=1024个字节=8比特
-    // 生成文件的最大体积 整数类型（以字节为单位 300k）
-    maxAssetSize: 1000000,
-    // 只给出 js/css 文件的性能提示
-    assetFilter: function(assetFilename) {
-      return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
-    }
-  },
 };

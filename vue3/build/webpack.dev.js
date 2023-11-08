@@ -20,5 +20,10 @@ module.exports = merge(common, {
   optimization: {
     minimize: false,
     minimizer: [],
-  }
+  },
+  optimization:{
+    usedExports: true, // 未被使用的exports不会被导出到bundle中，开发模式使用treesharking
+    emitOnErrors:true,
+    runtimeChunk: 'single',
+  },
 });
