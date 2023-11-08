@@ -1,6 +1,6 @@
+// let React = require('react'); // react 包是cjs模块
 // import React from 'react'; // 需要在 tsconfig.json 中设置 compilerOptions.esModuleInterop = true 【文章:】https://blog.csdn.net/zdhsoft/article/details/123785137
 // import * as React from 'react';
-// import * as ReactDOM from 'react-dom/client';
 
 const divContent = <div>
   {

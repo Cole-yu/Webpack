@@ -43,7 +43,8 @@ module.exports = {
     rules: [
       { 
         test: /\.tsx?$/,
-        loader: "ts-loader"
+        loader: "ts-loader" // tsc 编译
+        // loader: "babel-loader" // babel 编译，预设（presets）改为 "react-app" npm install babel-preset-react-app -D
       },
       {
         test: /\.m?js$/,
