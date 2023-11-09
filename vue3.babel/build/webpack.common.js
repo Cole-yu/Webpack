@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 const { VueLoaderPlugin } = require('vue-loader');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const chalk = require('chalk');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
@@ -43,14 +44,11 @@ module.exports = {
       { 
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use:{
-          loader: "ts-loader", // tsc 编译
-          options: {
-            // configFile: rootResolve('tsconfig.other.json'), // 指定别的ts配置，为了区分脚本的ts配置
-            appendTsSuffixTo: [/\.vue$/], // 对应文件添加.ts或.tsx后缀 app.vue.ts
-            // transpileOnly: true, // 关闭ts-loader的类型检查，即只进行转译；npm i fork-ts-checker-webpack-plugin -D, new ForkTsCheckerWebpackPlugin()
-          },
-        }
+        use:[
+          {
+            loader: "babel-loader", // babel 编译
+          }
+        ]
       },
       {
         test: /\.m?js$/,
@@ -141,8 +139,6 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       BASE_URL: '1111',
-      __VUE_OPTIONS_API__: true,
-      __VUE_PROD_DEVTOOLS__: false
       // 'process.env': {
       //   NODE_ENV: JSON.stringify('production')
       // }
@@ -152,5 +148,6 @@ module.exports = {
       format: `:msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`,
       clear: false
     }),
+    new ForkTsCheckerWebpackPlugin() // fork-ts-checker-webpack-plugin 负责类型检查
   ],
 };

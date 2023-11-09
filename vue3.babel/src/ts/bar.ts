@@ -7,7 +7,7 @@ interface Person{
     age: number | null
 }
 
-function getPerson(person: Person):Person{
+function getPerson(person: Person){
     let std:Person = {
         name: null,
         age: null

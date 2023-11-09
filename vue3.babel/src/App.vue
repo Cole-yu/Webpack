@@ -3,7 +3,9 @@
         <h1 class="title">webpack template</h1>
 
         <MyButton />
-        <MyLi />
+
+        <!-- <MyApp /> -->
+
         <!-- <el-carousel :interval="4000" type="card" height="2.36rem" id="carousel" arrow="never">
             <el-carousel-item v-for="(url, index) in list" :key="index">
                 <div class="v-wrap" @click="clickImgHandle(url)">
@@ -21,14 +23,12 @@
 </template>
 
 <script setup lang="ts">
+// import { MyApp } from '@/ts/baz';
 import MyButton from '@/components/MyButton.vue';
-import MyLi from '@/components/MyLi.vue';
 import { onMounted } from 'vue';
-import { add } from '@/js/foo';
 
-onMounted(():void => {
-    let count = add(1, 2, 3)
-    console.log('mount', count);
+onMounted(() => {
+    console.log('mount');
 })
 
 // import a1 from '@/image/animal/a_01.jpg';

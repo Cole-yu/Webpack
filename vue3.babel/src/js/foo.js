@@ -1,5 +1,5 @@
-const add = (...arg) => {
-    return arg.reduce((accumulator, currentValue, index, arr) => accumulator + currentValue, 10000);
+const add = (x, y) => {
+    return x + y;
 };
 
 const res = {
@@ -29,6 +29,8 @@ const getName = function(){
         return '无名';
     });
 }
+
+export default add;
 
 export {
     add,
