@@ -10,3 +10,7 @@ declare module "@/js/foo"{ // 非相对模块导入
 }
 
 declare module "@/ts/bar"; // 相对模块导入
+
+declare module "@/ts/MyRender";
+
+declare module "@/ts/baz";

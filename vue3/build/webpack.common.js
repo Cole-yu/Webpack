@@ -43,24 +43,22 @@ module.exports = {
       { 
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use:{
-          loader: "ts-loader", // tsc 编译
-          options: {
-            // configFile: rootResolve('tsconfig.other.json'), // 指定别的ts配置，为了区分脚本的ts配置
-            appendTsSuffixTo: [/\.vue$/], // 对应文件添加.ts或.tsx后缀 app.vue.ts
-            // transpileOnly: true, // 关闭ts-loader的类型检查，即只进行转译；npm i fork-ts-checker-webpack-plugin -D, new ForkTsCheckerWebpackPlugin()
-          },
-        }
+        use: [
+          "babel-loader",
+          {
+            loader: "ts-loader", // tsc 编译
+            options: {
+              // configFile: rootResolve('tsconfig.other.json'), // 指定别的ts配置，为了区分脚本的ts配置
+              appendTsSuffixTo: [/\.vue$/], // 对应文件添加.ts或.tsx后缀 app.vue.ts
+              // transpileOnly: true, // 关闭ts-loader的类型检查，即只进行转译；npm i fork-ts-checker-webpack-plugin -D, new ForkTsCheckerWebpackPlugin()
+            }
+          }
+        ]
       },
       {
         test: /\.m?js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+        use: 'babel-loader'
       },
       {
         test: /\.vue$/,

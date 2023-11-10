@@ -3,7 +3,21 @@
         <h1 class="title">webpack template</h1>
 
         <MyButton />
+        <br>
         <MyLi />
+        <br>
+        <Bar />
+        <MyRender :msg="life" />
+        <br>
+        <div>---------------</div>
+        <Baz />
+        <br>
+        <div>---------------</div>
+        <MyApp />
+
+        <BazMyButton title="BazMyButton 组件"/>
+
+        <obj />
         <!-- <el-carousel :interval="4000" type="card" height="2.36rem" id="carousel" arrow="never">
             <el-carousel-item v-for="(url, index) in list" :key="index">
                 <div class="v-wrap" @click="clickImgHandle(url)">
@@ -23,8 +37,13 @@
 <script setup lang="ts">
 import MyButton from '@/components/MyButton.vue';
 import MyLi from '@/components/MyLi.vue';
-import { onMounted } from 'vue';
-import { add } from '@/js/foo';
+import { Bar } from '@/ts/bar';
+import MyRender from '@/ts/MyRender'; // ts
+import { ref, onMounted } from 'vue';
+import { add } from '@/js/foo'; // js
+import Baz, { MyButton as BazMyButton, MyApp, obj } from '@/ts/baz'; // tsx
+
+const life = ref(1000);
 
 onMounted(():void => {
     let count = add(1, 2, 3)
@@ -66,6 +85,9 @@ onMounted(():void => {
 </script>
 
 <style lang="less" scoped>
+.app-wrap{
+    font-size: 0.36rem;
+}
 .title{
     color: blue  ;
     font-size: 0.48rem;

@@ -1,5 +1,3 @@
-// import { defineComponent } from 'vue';
-
 const age:number = 19;
 
 interface Person{
@@ -17,7 +15,12 @@ function getPerson(person: Person):Person{
     return std
 }
 
+function Bar() {
+    return 'Bar 函数组件';
+}
+
 export {
     age,
     getPerson,
+    Bar
 }

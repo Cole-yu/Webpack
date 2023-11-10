@@ -9,15 +9,14 @@
         "noImplicitAny": false, // 有隐含的any类型时报错
         "removeComments": true, // 移除注释
         "preserveConstEnums": true, // 保留const和enum声明
-        // "sourceMap": true,
+        "sourceMap": true,
         "esModuleInterop": true, // 给cjs模块增加defalut(React.default)属性。使 import * as React from 'react'; 能改成这样写 import React from 'react';
         "moduleResolution": "Node", // 非相对导入 /node_modules
         "jsx": "preserve",
+        // "jsxFactory": "h",
         "paths":{
             "/@/*": ["src/*"]
         }
-        // "jsx": "react", // react模式会生成React.createElement，在使用前不需要再进行转换操作了，输出文件扩展名为.js
-        // "jsx": "react-jsx", // react-jsx 模式会以 _jsx("div", {}, []) 的调用形式
     },
     // "files":[
     //     "src/ts/bar.ts"

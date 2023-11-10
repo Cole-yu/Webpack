@@ -1,8 +1,9 @@
 {
   "presets": [
-    "@babel/preset-env" // ES6 语法转化成 ES5
+    // "@babel/preset-env" // ES6 语法转化成 ES5
+    "@vue/cli-plugin-babel/preset" // @vue/cli-plugin-babel 构建在"@babel/preset-env"的基础上；其中jsx语法解析的底层依赖 “@vue/babel-plugin-jsx” 插件
   ],
   "plugins": [
-    
+    // "@vue/babel-plugin-jsx" // "@vue/babel-plugin-jsx" 【JSX语法细节:】 https://github.com/vuejs/babel-plugin-jsx/tree/main
   ]
 }

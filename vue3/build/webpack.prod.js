@@ -7,7 +7,8 @@ const devMode = process.env.NODE_ENV === 'development';
 
 module.exports = merge(common, {
    mode: 'production',
-   devtool: false,   
+   devtool: false,
+  //  devtool: 'inline-source-map',
    optimization: {
       // usedExports: true, // 开发模式使用treesharking
       minimize: true,
@@ -24,8 +25,8 @@ module.exports = merge(common, {
       splitChunks: {
         cacheGroups: {
           vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
+            test: /[\\/]node_modules[\\/]/, // // 只匹配node_modules里面的模块
+            name: 'vendors', // 提取文件命名为vendors,js后缀和chunkhash会自动加
             chunks: 'all',
           },
         },

@@ -4,7 +4,11 @@
 ```
 学习 Webpack 后搭建的小项目，供以后个人开发开箱即用。
 这是一个自己基于 Webpack5 搭建的 vue3 脚手架，配置了相关模块，添加了常用功能，便于以后 vue3 新项目的搭建。
-此脚手架集成了 vue3 可省去繁琐的配置过程，开箱即用。
+此脚手架集成了 `vue3`+`typescript` 可省去繁琐的配置过程，开箱即用, 支持 vue3模板，渲染函数，tsx 3种写法。
+
+通过 "@vue/cli-plugin-babel/preset" 预置集实现
+tsx => jsx // tsconfig.json中jsx: preserve
+
 ```
 
 ### 使用
