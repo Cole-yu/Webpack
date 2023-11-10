@@ -1,7 +1,7 @@
 {
-  "name": "vue3",
+  "name": "vue3.tsc.tsx",
   "version": "1.0.0",
-  "description": "webpack5 + vue3 + typescript",
+  "description": "webpack5 + vue3 + typescript + tsc编译 + tsx",
   "main": "src/main.ts",
   "scripts": {
     "dev": "webpack serve --progress=profile --node-env development --config build/webpack.dev.js",
