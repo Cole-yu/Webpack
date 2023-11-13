@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2015", // 支持的最低 ECMAScript 版本，可确保发出的代码不会使用更高版本中引入的语言功能
+    "module": "ES2015",
+    "lib": ["ES2015", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    "paths": {
+      // "jquery": ["node_modules/jquery/dist/jquery"], // 指定后可以在文件之直接 import * from 'jquery';
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "useDefineForClassFields": true,
+    "allowSyntheticDefaultImports": true, // 允许有没有默认导出的模块导入
+    "noEmit": true,
+    "jsx": "preserve",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "types": ["node"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
