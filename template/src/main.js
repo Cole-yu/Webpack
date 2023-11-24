@@ -10,7 +10,9 @@ import { add } from '@/js/foo';
 Vue.config.productionTip = false;
 
 console.log(add(2, 5));
-// console.log('BASE_URL', BASE_URL);
+
+console.log('PUBLIC_PATH', PUBLIC_PATH);
+console.log('process.env', process.env);
 
 new Vue({
   render: h => h(App)

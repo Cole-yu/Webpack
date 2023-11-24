@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="icon" href="<%= PUBLIC_PATH %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
     <link type="text/css" rel="stylesheet" href="https://mnews.dzh.com.cn/wap/style/common/css/base_min.css" />
-    <script src="./static/js/rem_750.js"></script>
+    <script src="<%= PUBLIC_PATH %>static/js/rem_750.js"></script>
 </head>
 <body id="container">
     <div id="app"></div>
+    <script src="<%= PUBLIC_PATH %>static/js/vue/2.7.15/vue.runtime.min.js"></script>
+    <script src="<%= PUBLIC_PATH %>static/js/element-ui/2.15.5/index.min.js"></script>
+    <script src="<%= PUBLIC_PATH %>static/js/mint-ui/2.2.7/index.js"></script>
+    <script src="<%= PUBLIC_PATH %>static/js/vuex/3.6.2/vuex.min.js"></script>
+    <script src="<%= PUBLIC_PATH %>static/js/axios/0.21.4/axios.min.js"></script>
 </body>
 </html>

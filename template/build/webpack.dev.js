@@ -16,6 +16,12 @@ module.exports = merge(common, {
     },
     hot: true,
     // overlay: true, // 错误时在浏览器上全屏覆盖
+    proxy: {
+      '/api/log': {
+        target: 'http://127.0.0.1:3000',
+        pathRewrite: {'^/api/log' : ''}
+      },
+    }
   },
   optimization: {
     minimize: false,
