@@ -110,7 +110,7 @@ module.exports = {
       filename: 'index.html',
       chunks: ['main'], //配置html需要引入的chunk,index 是 entry中的key
       minify: {
-        removeComments: true, // 移除注释
+        removeComments: true, // 移除html中的注释
         removeAttributeQuotes: true, // 移除属性中的双引号
         collapseWhitespace: true, // 去除空格与换行
       }
@@ -147,7 +147,7 @@ module.exports = {
     }),
   ],
   optimization: {
-    // usedExports: true, // 开发模式使用treesharking
+    // usedExports: true, // tree sharking，与 package.json 的 sideEffects 配合使用
     minimize: true,
     minimizer: [
       new CssMinimizerPlugin(),
@@ -157,11 +157,23 @@ module.exports = {
           format: {
             comments: false, // 删除js中的注释
           },
+          compress: {
+            // 移除所有console相关代码；
+            drop_console: true,
+            // 移除自动断点功能；
+            drop_debugger: true,
+            // 配置移除指定的指令，如console.log,alert
+            pure_funcs: ['console.log', 'console.error'],
+          },
         }
       })
     ],
     // runtimeChunk: 'single',
     splitChunks: {
+      // 实际拆分条件优先级： maxSize < minSize
+      minSize: 20*1024, // 限制拆分包的最小值，达到这个值，才能够拆出新包
+      maxSize: 50*1024, // 单位:字节 约等于40kb，生成的块大于40KB的chunk将拆分成较小部分，增加请求数量以实现更好的缓存
+      minChunks: 1, // 引入次数大于等于该值时，才会进行分包
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
