@@ -5,7 +5,9 @@
   "main": "src/main.js",
   "scripts": {
     "dev": "npx webpack serve --progress=profile --node-env development --config build/webpack.dev.js",
-    "build": "npx webpack build --progress=profile --node-env production --config build/webpack.prod.js",
+    "clean": "rimraf dist",
+    "package": "npx webpack build --progress=profile --node-env production --config build/webpack.prod.js",
+    "build": "npm run clean && npm run package",
     "server": "node build/server.js"
   },
   "keywords": [

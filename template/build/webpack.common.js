@@ -49,6 +49,12 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
+        options: {
+          compiler: require('vue-template-compiler'), // 默认编译器
+          compilerOptions: { // 编译器选项
+            preserveWhitespace: false // 移除模板标签之间的换行空格
+          }
+        }
       },
       {
         test: /\.less$/i,
