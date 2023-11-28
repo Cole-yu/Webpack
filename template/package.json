@@ -54,7 +54,12 @@
   },
   "engines": {
     "node": ">=18.17.0",
-    "pnpm": ">=8.6.2"
+    "pnpm": ">=8.11.0"
   },
-  "sideEffects": false
+  "sideEffects": [
+    "dist/*",
+    "*.css",
+    "*.less",
+    "*.vue"
+  ]
 }

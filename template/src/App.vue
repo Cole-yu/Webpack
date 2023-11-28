@@ -1,8 +1,8 @@
 <template>
     <div class="app-wrap">
-        <h1 class="title">webpack template</h1>
-
-        <el-carousel :interval="4000" type="card" height="2.36rem" id="carousel" arrow="never">
+        <Resume />
+        
+        <!-- <el-carousel :interval="4000" type="card" height="2.36rem" id="carousel" arrow="never">
             <el-carousel-item v-for="(url, index) in list" :key="index">
                 <div class="v-wrap" @click="clickImgHandle(url)">
                     <img :src="url">
@@ -14,11 +14,12 @@
             <div class="view-wrap">
                 <img :src="viewImgUrl" alt="">
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script>
+import Resume from '@/components/resume';
 import a1 from '@/image/animal/a_01.jpg';
 import a2 from '@/image/animal/a_02.jpg';
 import a3 from '@/image/animal/a_03.jpg';
@@ -26,6 +27,9 @@ import a4 from '@/image/animal/a_04.jpg';
 import a5 from '@/image/animal/a_05.jpg';
 import { getName } from '@/js/foo';
 export default{
+    components:{
+        Resume
+    },
     data(){
         return {
             list:[

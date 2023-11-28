@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!-- 打开app全屏显示时，系统默认显示苹果自带的菜单栏和工具栏，只有要删除时才设置content为no-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 设置状态栏的样式，black，或者black-translucent等 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />		
+    <!-- 忽略页面中的数字识别为电话号码/忽略识别邮箱email=no-->
+    <meta content="telephone=no" name="format-detection" />
     <link rel="icon" href="<%= PUBLIC_PATH %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
     <link type="text/css" rel="stylesheet" href="https://mnews.dzh.com.cn/wap/style/common/css/base_min.css" />
