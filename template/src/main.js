@@ -1,19 +1,22 @@
 import Vue from 'vue';
+import VueRouter from 'vue-router';
+import routes from '@/routes';
+import '@/styles/public.less';
+import ElemnetUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 import App from './App';
-// import { Carousel, CarouselItem } from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css';
-// Vue.use(Carousel);
-// Vue.use(CarouselItem);
-import '@/style/style.css';
-import { add } from '@/js/foo';
 
 Vue.config.productionTip = false;
+Vue.use(VueRouter);
+Vue.use(ElemnetUI);
 
-console.log(add(2, 5));
+// console.log('process.env', process.env);
 
-console.log('PUBLIC_PATH', PUBLIC_PATH);
-console.log('process.env', process.env);
+const router = new VueRouter({
+  routes
+});
 
 new Vue({
+  router,
   render: h => h(App)
 }).$mount('#app');

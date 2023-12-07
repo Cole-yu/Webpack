@@ -1,7 +1,7 @@
-const path = require('path');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 const { SERVER_HOST, SERVER_PORT } = require('./constant.js');
+const { rootResolve, devMode } = require('./utils.js');
 
 module.exports = merge(common, {
   mode: 'development',
@@ -12,7 +12,7 @@ module.exports = merge(common, {
     port: SERVER_PORT,
     // open: true,
     static: {
-      directory: path.resolve(__dirname, '..', 'dist'),
+      directory: rootResolve('dist'),
     },
     hot: true,
     // overlay: true, // 错误时在浏览器上全屏覆盖

@@ -1,4 +1,3 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); 
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -8,20 +7,7 @@ const webpack = require("webpack");
 const { VueLoaderPlugin } = require('vue-loader');
 const chalk = require('chalk');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-
-// 根目录
-const root = path.resolve(__dirname, '..');
-
-/**
- * 以根目录拼接路径
- * @param  {...any} args
- * @return
- */
-function rootResolve(...args){
-  return path.resolve(root, ...args);
-}
-
-const devMode = process.env.NODE_ENV === 'development';
+const { rootResolve, devMode } = require('./utils.js');
 
 module.exports = {
   resolve: {
@@ -34,7 +20,7 @@ module.exports = {
     main: rootResolve('src/main.js')
   },
   output: {
-    filename: 'js/[name].[contenthash].js',
+    filename: 'js/[name].[chunkhash].js',
     path: rootResolve('dist'),
     clean: true,
     publicPath: devMode ? '/' : './', // 生产环境上根据不同场景可能改变根路径，如 "./h5/"
@@ -102,7 +88,7 @@ module.exports = {
         test: /\.(eot|svg|woff|woff2|ttf)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'fonts/[hash:8][ext]',
+          filename: 'fonts/[contenthash][ext]',
         },
       },
     ],
@@ -123,8 +109,8 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: devMode ? 'style/[name].css' : 'style/[name].[contenthash].css',
-      // ignoreOrder: false, //启用关闭 警告⚠️
-      // chunkFilename: `style/[name].[chunkhash:8].css`
+      chunkFilename: devMode ? "style/[id].css" : "style/[id].[contenthash].css",
+      ignoreOrder: false, //启用关闭 警告⚠️
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -208,5 +194,6 @@ module.exports = {
     "element-ui": 'ELEMENT',
     "mint-ui": 'MINT',
     "axios": 'axios',
+    // "three": 'THREE',
   },
 };

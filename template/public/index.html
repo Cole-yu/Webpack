@@ -22,5 +22,23 @@
     <script src="<%= PUBLIC_PATH %>static/js/mint-ui/2.2.7/index.js"></script>
     <script src="<%= PUBLIC_PATH %>static/js/vuex/3.6.2/vuex.min.js"></script>
     <script src="<%= PUBLIC_PATH %>static/js/axios/0.21.4/axios.min.js"></script>
+    <!-- <script src="<%= PUBLIC_PATH %>static/js/three/0.158.0/three.min.js"></script> -->
+
+    <!-- ESM方案 -->
+    <script type="module">
+        import * as THREE from '<%= PUBLIC_PATH %>static/js/three/0.158.0/three.module.min.js';
+        window.THREE = THREE;
+    </script>
+    <!-- <script type="importmap">
+        {
+          "imports": {
+            "three": "./static/js/three/0.158.0/three.module.min.js"
+          }
+        }
+    </script>
+    <script type="module">
+        import * as THREE from 'three';
+        window.THREE = THREE;
+    </script> -->
 </body>
 </html>
