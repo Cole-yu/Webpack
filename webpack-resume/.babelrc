@@ -1,8 +1,0 @@
-{
-    "presets": [
-        "env"               // npm install babel-preset-env
-    ],
-    "plugins":[
-        "transform-vue-jsx" // npm install babel-plugin-syntax-jsx babel-helper-vue-jsx-merge-props babel-plugin-transform-vue-jsx
-    ] 
-}
