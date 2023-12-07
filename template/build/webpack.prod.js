@@ -3,8 +3,4 @@ const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
    mode: 'production',
-   cache: {
-      type: 'filesystem',
-      compression: 'gzip',
-   },
 });

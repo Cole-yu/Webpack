@@ -1,9 +1,6 @@
-// postcss-loader 的配置
-// npm install autoprefixer postcss-loader
-// const autoprefixer = require("autoprefixer");
+// postcss-loader 配置
 module.exports = {
     plugins: [
-        // autoprefixer(),
         'postcss-preset-env',
     ],
 }
