@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "DaQi-Font";
+  src: url("../font/DaQi-Font.otf");
+}
+
+.num-font {
+  font-family: "DaQi-Font";
+}
