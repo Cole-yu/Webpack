@@ -27,19 +27,20 @@ module.exports = {
   module: {
     rules: [
       {
+        // 必须先让 ts-loader 把 TS 转成 JS，再让 babel-loader 处理 JS 代码，否则 babel 无法识别 TS 语法，会报错。
         test: /\.tsx?$/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: 'babel-loader', // 将高版本 JS 代码（如 ES6+）转译为低版本兼容代码、按需引入 polyfill 等
             options: {
               presets: [
                 '@babel/preset-env',
-                // '@babel/preset-typescript'
+                // '@babel/preset-typescript', // 方案二： 直接让 babel 处理 TS 文件
               ]
             }
           },
           {
-            loader: 'ts-loader',
+            loader: 'ts-loader', // 方案一：将 TypeScript 代码编译为 JavaScript 代码（同时做类型检查）
             options: {
               transpileOnly: true // 只转译，不做类型检查，提升构建速度
             }

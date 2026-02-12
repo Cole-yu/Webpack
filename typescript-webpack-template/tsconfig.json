@@ -1,28 +1,30 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "checkJs": true,
-    "target": "ES2020",
-    "lib": ["ES2020", "DOM"], // 包含 ES2020 库
-    "jsx": "preserve",
-    "jsxImportSource": "vue",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "noUnusedLocals": false,
-    "noImplicitAny": false,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
+    "allowJs": true, // 允许 TS 编译器处理 .js 文件，不禁止导入 .js 文件
+    "checkJs": true, // 在 .js 文件中报告错误
+    "target": "ES5", // 编译后的 JS 语法版本，指定 TS 编译器将 TS 代码编译成哪个 ECMAScript 版本的 JS 代码
+    // "lib": ["ES5", "DOM"], // 指定 TS 在类型检查时要包含的标准库文件，lib 默认会跟随 target 自动加载对应版本的核心库
+    "module": "CommonJS", // 编译后使用的模块系统类型（ESM->import,export, CommonJS->require）
+    "moduleResolution": "Node", // 模块解析策略：Node 和 Classic
+    "resolveJsonModule": true, // JSON 文件可以作为模块直接导入，基于 JSON 文件的结构自动生成类型信息
+    "jsx": "preserve", // 在 .tsx文件里支持JSX
+    "jsxImportSource": "vue", // 告诉编译器处理JSX语法的工厂函数（如jsx()，h()）来自哪个包
+    "downlevelIteration": true, // target = ES5下 启用 downlevelIteration 标志以支持迭代器语法：for(const [key, value] of Map.entries()){ }
+    "allowSyntheticDefaultImports": true, // 允许从没有设置默认导出的模块中默认导入
+    "esModuleInterop": true, // 处理 ES 模块（ESM）与 CommonJS 模块（require）之间的导入导出差异
+    "strict": true, // 启用所有严格类型检查选项
+    "strictNullChecks": true, // 严格的 null检查
+    "noUnusedLocals": false, // 未使用的局部变量
+    "noImplicitAny": false, // any类型    
+    "forceConsistentCasingInFileNames": true, // 强制统一输入输出文件名大小写
+    "isolatedModules": true, // 每个文件作为单独的模块存在，都可以被独立编译不报错
     "types": [
       "node",
     ],
   },
   "include": [
-    "src/**/*"
+    "./**/*.ts",
+    "./**/*.tsx",
   ],
   "exclude": [
     "node_modules",

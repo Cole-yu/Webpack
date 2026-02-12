@@ -1,10 +1,14 @@
 // 用户类
 class User {
-  userId: string | null = null;
+  public userId: string | null = null;
   static instance: App.User | null = null;
 
-  // 私有属性 #option
-  #option: App.UserConfig = {
+  // 私有属性 option
+  // #option: App.UserConfig = {
+  //   userId: null,
+  // };
+  // 等价于
+  private option: App.UserConfig = {
     userId: null,
   };
 
@@ -13,7 +17,8 @@ class User {
       return User.instance;
     }
 
-    this.#option = option;
+    // this.#option = option;
+    this.option = option;
 
     let { userId } = option;
     this.userId = userId;
@@ -33,7 +38,8 @@ class User {
   }
 
   setUserId(userId) {
-    this.#option.userId = this.userId = userId;
+    // this.#option.userId = this.userId = userId;
+    this.option.userId = this.userId = userId;
   }
 }
 

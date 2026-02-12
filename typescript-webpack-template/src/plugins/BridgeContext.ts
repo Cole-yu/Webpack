@@ -16,7 +16,7 @@ class BridgeContext {
     let userId = await this.strategy.getUserId();
     this.user = new User({ userId });
 
-    let config = window.baseConfig[window.configKey];
+    let config = window.baseConfig[window.configKey] as App.ProductConfig;
     this.product = new Product({
       productId: config.productId,
       indicator: config.indicator,
