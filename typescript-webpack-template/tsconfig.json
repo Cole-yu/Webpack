@@ -19,6 +19,7 @@
     "forceConsistentCasingInFileNames": true, // 强制统一输入输出文件名大小写
     "isolatedModules": true, // 每个文件作为单独的模块存在，都可以被独立编译不报错，每个文件单独编译，不互相依赖。
     "skipLibCheck": true, // 跳过对 node_modules 里的第三方库（.d.ts 类型文件）的 TS 语法检查
+    // 只在 tsc 命令时生效。ts-loader + webpack 环境中，tsconfig.json 的 noEmit 配置 不！生！效！
     "noEmit": true, // 不生成输出TS编译后的JS文件；默认为 noEmit:false，生成输出文件
     "types": [ // 指定了types，只有被列出来的包才会被包含进来
       "node",
@@ -31,8 +32,8 @@
     // 设置baseUrl来告诉编译器到哪里去查找模块
     "baseUrl": ".", // 基础路径，tsconfig.json 中的相对路径都基于baseUrl查找
     "paths": {
-      "@/*": ["./src/*"], // 设置@别名，此处配置基于 baseUrl 路径映射
-      "~/*": ["./*"] // 设置~别名，此处配置基于 baseUrl 路径映射
+      "@/*": [ "./src/*" ], // 设置@别名，此处配置基于 baseUrl 路径映射
+      "~/*": [ "./*" ], // 设置~别名，此处配置基于 baseUrl 路径映射
     }
   },
   "include": [
