@@ -1,6 +1,6 @@
 declare namespace App {
   type UserConfig = {
-    userId: string | null;
+    userId: string;
   }
 
   // type User = {
@@ -9,7 +9,7 @@ declare namespace App {
   //   setUserId(userId: string): void;
   // }
 
-  type User = import("../plugins/User").UserInterface | null;
+  type User = import("../plugins/User").User;
 
   type Product = {
     productId: string;

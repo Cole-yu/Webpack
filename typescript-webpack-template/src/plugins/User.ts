@@ -1,16 +1,12 @@
 // 用户类
 class User {
-  public userId: string | null = null;
-  static instance: App.User | null = null;
+  readonly userId!: string;
+  private static instance: App.User;
 
   // 私有属性 option
-  // #option: App.UserConfig = {
-  //   userId: null,
-  // };
+  // readonly #option!: App.UserConfig;
   // 等价于
-  private option: App.UserConfig = {
-    userId: null,
-  };
+  private readonly option!: App.UserConfig;
 
   constructor(option: App.UserConfig) {
     if (User.instance) {
@@ -20,31 +16,34 @@ class User {
     // this.#option = option;
     this.option = option;
 
-    let { userId } = option;
-    this.userId = userId;
-
+    this.userId = option.userId;
     User.instance = this;
   }
 
   static getInstance(option?: App.UserConfig): App.User {
-    if (!User.instance && option) {
-      return User.instance = new User(option);
+    if (!this.instance && option) {
+      return this.instance = new User(option);
     }
-    return User.instance;
+
+    // 必须保证返回已创建的实例
+    if (!this.instance) {
+      throw new Error("首次调用 getInstance 必须传入 UserConfig");
+    }
+
+    return this.instance;
   }
 
-  getUserId() {
+  getUserId(): string {
     return this.userId;
   }
 
-  setUserId(userId) {
-    // this.#option.userId = this.userId = userId;
-    this.option.userId = this.userId = userId;
+  /**
+   * 获取完整配置
+   */
+  getOption(): Readonly<App.UserConfig> {
+    // return this.#option;
+    return this.option;
   }
-}
-
-export type {
-  User as UserInterface
 }
 
 export {

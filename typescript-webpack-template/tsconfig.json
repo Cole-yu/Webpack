@@ -20,7 +20,7 @@
     "isolatedModules": true, // 每个文件作为单独的模块存在，都可以被独立编译不报错，每个文件单独编译，不互相依赖。
     "skipLibCheck": true, // 跳过对 node_modules 里的第三方库（.d.ts 类型文件）的 TS 语法检查
     // 只在 tsc 命令时生效。ts-loader + webpack 环境中，tsconfig.json 的 noEmit 配置 不！生！效！
-    "noEmit": true, // 不生成输出TS编译后的JS文件；默认为 noEmit:false，生成输出文件
+    "noEmit": true, // 不生成输出TS编译后的JS文件；默认为 noEmit:false，生成输出文件；Webpack 项目**可省略！**
     "types": [ // 指定了types，只有被列出来的包才会被包含进来
       "node",
     ],
